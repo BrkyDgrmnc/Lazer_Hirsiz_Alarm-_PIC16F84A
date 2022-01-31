@@ -1,0 +1,80 @@
+'****************************************************************
+'*  Name    : HIRSIZ ALARMI                                     *
+'*  Author  : [BERKAY DEÐÝRMENCÝ ]                              *
+'*  Notice  : Copyright (c) 2016 [select VIEW...EDITOR OPTIONS] *
+'*          : All Rights Reserved                               *
+'*  Date    : 05/2/2016                                         *
+'*  Version : 1.1                                               *
+'*  Notes   :                                                   *
+'*          :                                                   *
+'****************************************************************
+
+     TRISA=%00000111    'PORTA.0 GÝRÝÞ YAPILDI
+     TRISB=0            'PORTB TAMAMEN ÇIKIÞ YAPILDI
+     i var byte         'Ý DEÐÝÞKENÝ TANIMLANDI
+      
+     PORTB=0            'PORTB SIFIRLANDI
+     PAUSE 100          '100 MS BEKLE
+      
+      
+      
+      
+     BASLANGIC: 
+      
+       IF PORTA.0=0 THEN   'EÐER LDR'YE LAZER IÞINI GELMÝYORSA 
+       GOTO BASLA1         'BAÞLA1 ETÝKETÝNE GÝT
+       ENDIF
+      
+       
+       IF PORTA.1=0 THEN   'EÐER LDR'YE LAZER IÞINI GELMÝYORSA 
+       GOTO BASLA          'BAÞLA ETÝKETÝNE GÝT
+       ENDIF
+       
+       IF PORTA.2=0 THEN   'EÐER LDR'YE LAZER IÞINI GELMÝYORSA 
+       GOTO BASLA2          'BAÞLA2 ETÝKETÝNE GÝT
+       ENDIF
+        GOTO BASLANGIC      'EÐER ÞART SAÐLANMIYORSA BASLANGIÇ ETÝKETÝNE GERÝ DÖN
+             
+     
+     
+        BASLA: 
+       
+      for i=1 to 40       'KIRMIZI LEDÝ 20 KERE YAKIP SÖNDÜR 
+       toggle PORTB.0     'ALARMI ÇALIÞTIR  
+       TOGGLE PORTB.1     'PORTB YÝ TERSLE (1 ÝSE 0 , 0 ÝSE 1 YAP)
+       PAUSE 100          '100 MS BEKLE 
+       next
+       PORTB.2=0          'ALARMI KAPAT
+       
+        goto BASLANGIC    'BAÞLANGIC ETÝKETÝNE DÖN
+        
+         
+     
+        BASLA1: 
+  
+      for i=1 to 40       'KIRMIZI LEDÝ 20 KERE YAKIP SÖNDÜR 
+       toggle PORTB.0     'ALARMI ÇALIÞTIR  
+       TOGGLE PORTB.2     'PORTB YÝ TERSLE (1 ÝSE 0 , 0 ÝSE 1 YAP)
+       PAUSE 100          '100 MS BEKLE 
+       next
+       PORTB.2=0          'ALARMI KAPAT
+       
+        goto BASLANGIC    'BAÞLANGIC ETÝKETÝNE DÖN
+        
+         
+     
+        BASLA2: 
+        
+      for i=1 to 40       'KIRMIZI LEDÝ 20 KERE YAKIP SÖNDÜR 
+       toggle PORTB.0     'ALARMI ÇALIÞTIR  
+       TOGGLE PORTB.3     'PORTB YÝ TERSLE (1 ÝSE 0 , 0 ÝSE 1 YAP)
+       PAUSE 100          '100 MS BEKLE 
+       next
+       PORTB.2=0          'ALARMI KAPAT
+       
+        goto BASLANGIC    'BAÞLANGIC ETÝKETÝNE DÖN
+          
+          
+          
+      
+      END    
