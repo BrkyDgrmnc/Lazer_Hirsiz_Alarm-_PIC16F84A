@@ -1,3 +1,5 @@
+05/2/2016 
+
 LAZER IŞIK KONTROLLÜ ALARM DEVRESİ NEDİR ?
 
 Lazer ışık kontrollü alarm devresi üzerindeki 3 ayrı LDR sayesinde 3 ayrı odanın güvenlik kontrolünü sağlayan sistemdir. Alarm devresi aktif hale geldikten sonra lazer ışığının önünden geçilirse hem görsel hem de ses olarak alarm verir. Alarm  (eğer lazer ışığının önünde engel yoksa) yaklaşık 4sn çalmaya devam eder, 4sn sonra alarm kapanır.
